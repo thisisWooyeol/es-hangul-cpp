@@ -10,13 +10,13 @@ else()
   # If EsHangulCpp is being used as a subproject via `add_subdirectory`,
   # chances are that the "main project" does not include EsHangulCpp headers
   # in any of its headers, in which case installation is not needed.
-  option(ESHANGULCPP_INSTALL "Build EsHangulCpp (Projects embedding es-hangul-cpp may want to turn this OFF.)"  OFF)
+  option(ESHANGULCPP_INSTALL "Build EsHangulCpp (Projects embedding es-hangul-cpp may want to turn this OFF.)" OFF)
 endif()
 
 # Project options
-option(ESHANGULCPP_BUILD_TESTING "Build tests for EsHangulCpp" ON)
+option(ESHANGULCPP_BUILD_TESTING "Build tests" ON)
+option(ESHANGULCPP_BUILD_BENCHMARKS "Build benchmarks" ON)
 option(ESHANGULCPP_ENABLE_LINTERS "Enable Linters for the test builds" OFF)
-option(ESHANGULCPP_BUILD_BENCHMARKS "Build benchmarks" OFF)
 
 project(EsHangulCpp LANGUAGES CXX)
 
@@ -42,4 +42,9 @@ if(ESHANGULCPP_BUILD_TESTING AND NOT_SUBPROJECT)
   include(CTest)
   enable_testing()
   add_subdirectory(test)
+endif()
+
+# Build benchmarks only if requested
+if(ESHANGULCPP_BUILD_BENCHMARKS)
+  add_subdirectory(benchmark)
 endif()
