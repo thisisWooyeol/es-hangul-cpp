@@ -1,0 +1,17 @@
+.vscode/
+.cache/
+.idea/
+build/
+.cache/
+*.data
+*.so
+*.o
+*.out
+.vs/
+.DS_Store
+
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Makefile
+cmake_install.cmake
